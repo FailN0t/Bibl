@@ -5,63 +5,47 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <algorithm>
+#include <time.h>
 using namespace std;
 
-vector<int> vec;
 
+template<class cont>
+void show(cont col) {
+	for (auto i = col.begin(); i != col.end(); ++i) {
+		cout << i->first << "\t" << i->second << endl;
+	}
+	cout << endl << endl;
+}
 
 template <class T>
-class lisst {
-	list<T> lis;
-public:
-
-	void push_back(T& t) {
-		lis.push_back(t);
+void writee(T& t) {
+	for (auto it = t.begin(); it != t.end(); it++) {
+		for (auto jt = it->begin(); jt != it->end(); jt++)
+		{
+			*jt = rand() % 9 + 1;
+		}
 	}
-
-	int size() {
-		return lis.size();
+}
+template <class T>
+void print(T& t) {
+	for (auto it = t.begin(); it != t.end(); it++) {
+		for (auto jt = it->begin(); jt != it->end(); jt++)
+		{
+			cout << *jt << "\t";
+		}
+		cout << endl;
 	}
-
-	T& operator[](int j) {
-		auto i_it = lis.begin();
-		for (int i = 0; i < j; i++, i_it++) {}
-		return *i_it;
-	}
-};
+}
 
 int main()
 {
-	map<string, string> mp;
+	srand(time(NULL));
+	vector<vector<int>> vc(5, vector<int> (5));
+	
+	writee(vc);
 
-	vector<int> vec;
-
-	mp["a"] = "aaa";
-	mp["b"] = "bbb";
-	mp["c"] = "ccc";
-	mp["a"] = "sss";
-	cout << mp["a"] << endl;
-
-	pair<string, string> element("s", "52");
-
-	mp.insert(element);
-
-	pair<string, string> mp_pair("f", "52");
-
-	pair<map<string, string>::iterator, bool> err = mp.insert(element);
-
-	cout << err.first->first << "   " << err.first->second << endl;
-
-	if (err.second == false) {
-		cout << "err" << endl;
-	}
-
-	map<string, string>::iterator it = mp.begin();
-	for (; it != mp.end(); it++) {
-		cout << "key " << it->first << " Value " << it->second << endl;
-	}
-
-
+	print(vc);
 
 }
 
