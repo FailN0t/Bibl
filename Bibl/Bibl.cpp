@@ -32,20 +32,35 @@ public:
 
 int main()
 {
-	vec.resize(5, 0);
+	map<string, string> mp;
 
+	vector<int> vec;
 
+	mp["a"] = "aaa";
+	mp["b"] = "bbb";
+	mp["c"] = "ccc";
+	mp["a"] = "sss";
+	cout << mp["a"] << endl;
 
-	lisst<int> li;
+	pair<string, string> element("s", "52");
 
-	for (int i = 5; i < 4000000; i++) {
-		li.push_back(i);
+	mp.insert(element);
+
+	pair<string, string> mp_pair("f", "52");
+
+	pair<map<string, string>::iterator, bool> err = mp.insert(element);
+
+	cout << err.first->first << "   " << err.first->second << endl;
+
+	if (err.second == false) {
+		cout << "err" << endl;
 	}
 
-	//li[3] = 7;
-	for (int i = 1000000; i < li.size(); i++) {
-		cout << li[i] << endl;
+	map<string, string>::iterator it = mp.begin();
+	for (; it != mp.end(); it++) {
+		cout << "key " << it->first << " Value " << it->second << endl;
 	}
+
 
 
 }
